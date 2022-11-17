@@ -339,8 +339,8 @@
   position: relative;
   background-color: var(--midGrey);
   padding: 10px;
-  font-size: 1.5rem;
-  width: 50%;
+  font-size: 100%;
+  /* width: 50%; */
   text-align: center;
   font-family: customWebFont;
   box-sizing: border-box;
