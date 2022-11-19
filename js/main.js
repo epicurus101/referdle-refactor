@@ -1,11 +1,20 @@
-import { uColours } from './contents.js';
+import { uColours, keyboard, boardManager, dictionary, puzzles, storage, gameManager } from './contents.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    colourConform();
-    playButtons();
+    initialisation()
 
+    async function initialisation(){
+        colourConform();
+        playButtons();
+        keyboard.initialise();
+        boardManager.createBoards();
+        storage.initialise();
+        await puzzles.load();
+        await dictionary.load();
+        gameManager.startup();
+    }
 
     function colourConform() {
         var r = document.querySelector(':root');
