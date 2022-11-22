@@ -11,7 +11,7 @@ export class Board {
     availableSpace = 1;
     guessedWordCount = 0;
     success = false;
-    excludedLetters = new Set();
+    excluded = new Set();
     squares = [];
 
     constructor(index){
@@ -58,9 +58,10 @@ export class Board {
 
     getAllBoardComparisons(){
         let comparisons = []
+        let target = Array.from(this.targetWord)
         for (let i = 0; i < this.guessedWords.length; i++) {
             let guess = this.guessedWords[i];
-            let comparison = logic.getComparison(guess, Array.from(this.targetWord));
+            let comparison = logic.getComparison(guess, target);
             comparisons.push(comparison);
         }
         return comparisons
@@ -77,7 +78,7 @@ export class Board {
     loadFromSave(object){
         this.targetWord = object.targetWord;
         this.guessedWords = object.guessedWords;
-        this.excludedLetters = new Set(object.excludedLetters);
+        this.excluded = new Set(object.excluded);
         this.guessedWordCount = object.guessedWordCount;
         if ((this.guessedWordCount > 0) && (this.guessedWords[this.guessedWordCount-1].join("") == this.targetWord)) {
             this.success = true
@@ -119,6 +120,12 @@ export class Board {
                 }
             }    
         }
+    }
+
+    fullOpacity(){
+        this.squares.forEach(square => {
+            square.style.opacity = 1.0;
+        })
     }
 
     switchOn(row, letter){
@@ -168,7 +175,7 @@ export class Board {
         this.availableSpace = 1;
         this.guessedWordCount = 0;
         this.success = false;
-        this.excludedLetters.clear();
+        this.excluded.clear();
         this.squares.forEach( square => {
             square.textContent = ""
             square.style.backgroundColor = uColours.black;
@@ -227,6 +234,7 @@ export class Board {
             availableSpaceEl.textContent = "";
         }
     }
+
 
     flipTiles(interval, comparisonResult, guessedWord) {
         guessedWord = guessedWord ?? this.guessedWordCount

@@ -1,15 +1,21 @@
-import { storage, keyboard, boardManager, puzzles, logic } from "./contents.js"
+import { storage, keyboard, boardManager, puzzles, logic, modalManager } from "./contents.js"
 
 const gameManager = {
-    firstDay: new Date("23 Oct 2022"),
+    firstDay: new Date("2 Nov 2022"),
     dailyMode: null,
     startup: function () {
+        let bc = document.getElementById("board-container")
+        let sq = document.querySelector(".square")
+        let sqHeight = sq.offsetHeight
+        bc.style.fontSize = sqHeight * 0.6 + 'px'
+
         let buttons = document.querySelectorAll(".play-mode-button")
         if (gameManager.isGameInProgress(true) || gameManager.isDailyAvailable()) {
             buttons[0].onclick()
         } else {
             buttons[1].onclick()
         }
+      //  modalManager.test()
     },
 
 
@@ -34,11 +40,8 @@ const gameManager = {
     },
 
     processPractice: function () {
-        console.log('processing practice')
         let status = storage.getSaveStatus(false)
-        console.log(status)
         if (status == "completed" || status == "failed") {
-            console.log("deleting")
             storage.deleteSave(false)
         }
     },
@@ -57,14 +60,11 @@ const gameManager = {
             return true
         }
     },
-
     getDay: function () {
         const today = new Date().getTime();
         const diff = today - gameManager.firstDay;
         const daysDiff = Math.floor(diff / (24 * 60 * 60 * 1000));
-        // console.log("what day is it?", daysDiff);
         return daysDiff;
-
     },
     //call this whenever loading a new daily
     updateDaily: function () { //consider use of globals to avoid this bs?!
@@ -81,36 +81,49 @@ const gameManager = {
     enterDaily: function () {
         gameManager.processDaily()
         if (gameManager.isGameInProgress(true)) {
-            console.log("daily in progress")
             boardManager.loadFromSave(true)
             boardManager.cycle();
         } else if (gameManager.isDailyAvailable()) { // still need to work through this!!!
-            console.log("loading fresh daily")
             let puzzle = puzzles.get(gameManager.getDay());
             puzzle.forEach((word, index) => { puzzle[index] = word.toLowerCase() })
             boardManager.loadPuzzle(puzzle, true)
             gameManager.updateDaily()
             boardManager.cycle();
         } else {
-            console.log("display old daily")
             boardManager.loadFromSave(true)
         }
     },
     enterPractice: function () {
         gameManager.processPractice()
         if (gameManager.isGameInProgress(false)) {
-            console.log("practice in progress")
             boardManager.loadFromSave(false)
             boardManager.cycle();
         } else {
-            console.log("loading fresh practice")
             let puzzle = logic.newPuzzle();
             boardManager.loadPuzzle(puzzle, false);
             boardManager.cycle();
         }
+    },
+     handleWin: function() {
+        console.log('winning')
+        let guesses = boardManager.totalGuesses()
+        let daily = gameManager.dailyMode
+        storage.addToStats(guesses, gameManager.dailyMode)
+        let streak = storage.getStreak(daily).current
+
+        const event = new CustomEvent('endGame', {
+            detail: {
+                win: true,
+                guesses: guesses,
+                boards: boardManager.boards,
+                streak: streak,
+                daily: daily,
+                dailyNo: gameManager.getDay(),
+            }
+        });
+        document.dispatchEvent(event);
+        console.log('event dispatched')
     }
-
-
 
 }
 
@@ -129,4 +142,8 @@ document.addEventListener('switchMode', (e) => {
             gameManager.enterPractice()
         }
     }
+})
+
+document.addEventListener('submit', (e) => {
+    boardManager.handleSubmitWord(gameManager.dailyMode)
 })

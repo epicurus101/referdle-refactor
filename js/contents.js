@@ -10,6 +10,12 @@ import { puzzles } from './puzzles.js';
 import { process } from './process.js';
 import { storage } from './storage.js';
 import { gameManager } from './gameManager.js';
+import { statElement } from './statElement.js';
+import { copyText } from './copyText.js';
+import { Modal } from '../modals/Modal.js';
+import { modalManager } from '../modals/modalManager.js';
+import { common } from './common.js';
+
 
 
 
@@ -25,5 +31,11 @@ export {
     puzzles,
     process,
     storage,
-    gameManager
+    gameManager,
+    statElement,
+    copyText,
+    Modal,
+    modalManager,
+    common
+    
 }

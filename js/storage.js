@@ -7,7 +7,7 @@ const storage = {
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
             localStorage.clear()
-            localStorage.setItem("storageVersion", storage.version)
+        //    localStorage.setItem("storageVersion", storage.version)
         }
     },
     doesKeyExist: function(str){
@@ -46,7 +46,7 @@ const storage = {
         }
     },
     getStreak: function(daily){
-        let stats = loadStats(daily)
+        let stats = storage.loadStats(daily)
         return process.calculateStreak(stats)
     },
 
@@ -65,7 +65,10 @@ const storage = {
         let key = daily ? "stats-D" : "stats-P"
         if (storage.doesKeyExist(key)) {
             let save = localStorage.getItem(key)
-            return JSON.parse(save)
+            console.log('load stats', save)
+            let parsed = JSON.parse(save)
+            console.log('here is the parsed version', parsed)
+            return parsed
         } else {
             return []
         }

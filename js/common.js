@@ -1,0 +1,5 @@
+let common = {
+
+}
+
+export {common}

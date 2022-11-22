@@ -29,6 +29,7 @@ const process = {
         }
     },
     calculateStreak: function (stats) {
+        console.log('calculate streak using:', stats)
         let current = null
         let streak = 0
         let max = 0
@@ -49,7 +50,11 @@ const process = {
         let object = {};
         object.targetWord = board.targetWord;
         object.guessedWords = board.guessedWords;
-        object.excludedLetters = Array.from(board.excludedLetters);
+        if (object.guessedWords.length > board.guessedWordCount) {
+            object.guessedWords.pop()
+            object.guessedWords.push([]) //cleanup half words!
+        }
+        object.excluded = Array.from(board.excluded);
         object.guessedWordCount = board.guessedWordCount;
 
         return object;

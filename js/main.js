@@ -1,4 +1,4 @@
-import { uColours, keyboard, boardManager, dictionary, puzzles, storage, gameManager } from './contents.js';
+import { uColours, keyboard, boardManager, dictionary, puzzles, storage, gameManager, common } from './contents.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         playButtons();
         keyboard.initialise();
         boardManager.createBoards();
+        dimensionConform();
         storage.initialise();
         await puzzles.load();
         await dictionary.load();
@@ -22,6 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.keys(uColours).forEach(key => {
             r.style.setProperty('--' + key, uColours[key]);
         })
+    }
+
+    function dimensionConform(){
+        let game = document.getElementById("game")
+        common.height = game.offsetHeight
+        common.width = game.offsetWidth
+        var r = document.querySelector(':root');
+        r.style.setProperty('--height', game.offsetHeight);
+        r.style.setProperty('--width', game.offsetWidth)
+        console.log(window.getComputedStyle(r).getPropertyValue("--custom"))
     }
 
     function playButtons() {

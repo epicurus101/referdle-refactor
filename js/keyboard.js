@@ -7,7 +7,6 @@ const keyboard = {
     standardKeys: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
 
     initialise: function () {
-
         keyboard.keys.forEach(key => {
             const letter = key.getAttribute("data-key");
             key.setAttribute("id", `k-${letter}`);
@@ -16,18 +15,17 @@ const keyboard = {
 
             key.addEventListener('long-press', function (e) {
                 e.preventDefault(); //maybe work out what this does some day
-                longpressHandler(letter);
+                keyboard.longpressHandler(letter);
             });
 
             key.addEventListener('click', function (e) {
                 if (!keyboard.allowInput) { return }
-                // console.log(e.button)
-                keyHandler(letter);
+                keyboard.keyHandler(letter);
             })
 
             key.addEventListener('contextmenu', function (e) {
                 e.preventDefault()
-                longpressHandler(letter)
+                keyboard.longpressHandler(letter)
             })
         })
     },
@@ -40,23 +38,26 @@ const keyboard = {
             const event = new CustomEvent('delete');
             document.dispatchEvent(event);
             return;
-        } else if (!standardKeys.includes(letter)) {
+        } else if (!keyboard.standardKeys.includes(letter)) {
             return;
         } else {
-            const event = new CustomEvent('letterKey', {detail: {
-                letter: letter
-            }});
+            const event = new CustomEvent('letterKey', {
+                detail: {
+                    letter: letter
+                }
+            });
             document.dispatchEvent(event);
         }
     },
-    // bounce message to board manager which in turn bounces message back to 'updateKeyboard' (with details) - reset / update / save!!
     longpressHandler: function (letter) {
-        if (!standardKeys.includes(letter)) {
+        if (!keyboard.standardKeys.includes(letter)) {
             return;
         } else {
-            const event = new CustomEvent('excludeLetter', {detail: {
-                letter: letter
-            }});
+            const event = new CustomEvent('excludeLetter', {
+                detail: {
+                    letter: letter
+                }
+            });
             document.dispatchEvent(event);
             animateCSS(`#k-${letter}`, "headShake")
         }
@@ -69,17 +70,30 @@ const keyboard = {
         })
     },
     //need to come up with comparisonData from boardmanager
-    update: function (excluded, comparisonData) {
+    update: function (board) {
+        let excluded = board.excluded
         excluded.forEach(letter => {
             const button = document.getElementById(`k-${letter}`);
             keyboard.updateKey(button, -1);
         });
-        Object.keys(comparisonData).forEach(letter => {
-            const button = document.getElementById(`k-${letter}`);
-            keyboard.updateKey(button, comparisonData[letter]);
-        })
+        let comparisons = board.getAllBoardComparisons()
+        for (let i = 0; i < comparisons.length; i++) {
+            const compare = comparisons[i];
+            const currentWordArr = board.guessedWords[i];
+            if (currentWordArr.length == 5) {
+                keyboard.updateKeyboardRow(compare, currentWordArr)
+            }
+
+        }
     },
-    updateKey: function(key, newValue) { //keyboard
+    updateKeyboardRow: function (comparisonResult, currentWordArr) { // keyboard
+        for (let i = 0; i < comparisonResult.length; i++) {
+            const letter = currentWordArr[i];
+            const button = document.getElementById(`k-${letter}`);
+            keyboard.updateKey(button, comparisonResult[i]);
+        }
+    },
+    updateKey: function (key, newValue) { //keyboard
         if (key.customInfo >= newValue) {
             return;
         } else {
@@ -100,7 +114,46 @@ const keyboard = {
         }
     }
 
-
 }
 
 export { keyboard }
+
+let keyTimers = {};
+let responded = new Set();
+
+document.addEventListener('keydown', function (event) {
+    let str = event.key.toLowerCase();
+    if (str == "backspace") {
+        str = "del";
+    }
+    if (keyTimers[str] == null) {
+        keyTimers[str] = Date.now();
+    } else if (keyTimers[str] != null && !responded.has(str)) {
+        const interval = Date.now() - keyTimers[str];
+        if (interval > 800) {
+            keyboard.longpressHandler(str);
+            responded.add(str)
+        }
+    } else {
+        return;
+    }
+});
+
+document.addEventListener('keyup', function (event) {
+    let str = event.key.toLowerCase();
+    if (str == "backspace") {
+        keyboard.keyHandler("del");
+    } else if (str == "enter") {
+        keyboard.keyHandler("enter");
+    } else if (str == "tab") {
+        const event = new CustomEvent('cycle');
+        document.dispatchEvent(event);
+    } else if (keyTimers[str]) {
+        const interval = Date.now() - keyTimers[str];
+        delete keyTimers[str];
+        if (interval < 800) {
+            keyboard.keyHandler(str);
+        }
+    }
+    responded.delete(str)
+})
