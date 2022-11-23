@@ -1,4 +1,5 @@
 import { EndGameModal } from "./EndGameModal.js"
+import { HelpModal } from "./HelpModal.js"
 import { Modal } from "./Modal.js"
 
 const modalManager = {
@@ -14,6 +15,10 @@ const modalManager = {
     endGame: function(e){
         let modal = new EndGameModal(e)
         modalManager.add(modal.modal)
+    },
+    showHelp: function(e){
+        let modal = new HelpModal(e)
+        modalManager.add(modal.modal)
     }
 }
 
@@ -28,4 +33,8 @@ document.addEventListener("closeManagedModal", (e) => {
 
 document.addEventListener("endGame", (e) => {
     modalManager.endGame(e)
+})
+
+document.addEventListener("showHelpModal", (e) => {
+    modalManager.showHelp(e)
 })

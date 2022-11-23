@@ -1,5 +1,4 @@
 
-
 const process = {
     saveStatus: function(save){
         console.log(save)
@@ -7,7 +6,9 @@ const process = {
         for (let i = 0; i < save.length; i++) {
             const board = save[i];
             console.log("here's the board", board)
-            boards.push(process.boardStatus(board))
+            let result = process.boardStatus(board)
+            console.log("status: ", result)
+            boards.push(result)
         }
         if (boards.includes("failed")) {
             return "failed"
@@ -20,7 +21,7 @@ const process = {
     boardStatus: function(board){
         if (board.guessedWords.length == 0) {return "playable"}
         let lastWord = board.guessedWords.at(-1).join("")
-        if (lastWord == board.target) {
+        if (lastWord == board.targetWord) {
             return "completed"
         } else if (board.guessedWords.length == 5) {
             return "failed"

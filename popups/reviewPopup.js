@@ -1,13 +1,13 @@
 import {gameManager, common} from  '../js/contents.js'
 
-
-let active = false
-let daily = false
-
 let interval
 
 document.addEventListener('reviewMode', (e) => {
-    daily = e.detail.daily
+    console.log('heard review mode')
+    create(e.detail.daily)
+});
+
+function create(daily) {
     console.log('review');
 
     const modal = document.createElement("div")
@@ -38,23 +38,16 @@ document.addEventListener('reviewMode', (e) => {
 
     } else {
         child.textContent = "> New Practice Puzzle <"
+        modal.onclick = function(e) {
+            e.stopPropagation();
+            destroy()
+            document.dispatchEvent(new CustomEvent('newPractice'))
+        }
     }
-
-
-
     const holder = document.getElementById("top-bar")
     holder.appendChild(modal)
+}
 
-    modal.onclick = function(e) {
-        // if (!daily) {
-        //     e.stopPropagation();
-        //     storage.deleteSave(daily)
-        //     startAgain()
-        //     active = false;
-        //     return;
-        // }
-    }
-});
 
 function getTimeRemaining(endtime) {
     const total = Date.parse(endtime) - Date.parse(new Date());
@@ -70,30 +63,18 @@ function getTimeRemaining(endtime) {
     };
   }
   
+document.addEventListener('switchMode', (e) => {
+    destroy()
+})
 
+function destroy(){
 
-  
-  
-  
-  
+    if (interval) { clearInterval(interval) }
+    let popup = document.getElementById("reviewPopup")
+    if (popup) {
+        if (popup.parentElement) {
+            popup.parentElement.removeChild(popup)
+        }
 
-
-
-// modal.addEventListener('animationend', () => {
-//     modal.classList.remove("animate__tada");
-//     setTimeout(shakeAgain, 10000);
-//   });
-
-// function shakeAgain(){
-//     if (active) {
-//         modal.classList.add("animate__tada");
-//     }
-// }
-
-// function startAgain() {
-//     modal.style.display = "none";
-//     console.log(`starting again`);
-
-//     document.dispatchEvent(new CustomEvent('keyboardAppear'));
-//     document.dispatchEvent(new CustomEvent('startAgain'));
-// }
+    }
+}

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referdle-v0.05</title>
+    <title>Referdle-v0.06</title>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="modals/endGameModal.js"></script>
     <script src="js/longPressEvent.js"></script>
     <script type="module" src="popups/reviewPopup.js"></script>
+    <script type="module" src="popups/menuPopup.js"></script>
     <script type="module" src="popups/copiedPopup.js"></script>
+    <script type="module" src="popups/dictPopup.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
     <link
     rel="stylesheet"
@@ -31,8 +33,8 @@
             <div id="top-bar">  
             </div>
             <div id="board-container">
+                <div id="menu-popup"> </div>
             </div>
-            <div id="menu-modal"> </div>
             <div id="keyboard-container" class="prevent-select">
                 <div class="keyboard-row" class="prevent-select">
                     <button data-key="q">q</button>

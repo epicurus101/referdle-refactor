@@ -81,16 +81,25 @@ const gameManager = {
     enterDaily: function () {
         gameManager.processDaily()
         if (gameManager.isGameInProgress(true)) {
+            console.log("daily in prog")
             boardManager.loadFromSave(true)
             boardManager.cycle();
         } else if (gameManager.isDailyAvailable()) { // still need to work through this!!!
+            console.log('new daily')
             let puzzle = puzzles.get(gameManager.getDay());
             puzzle.forEach((word, index) => { puzzle[index] = word.toLowerCase() })
             boardManager.loadPuzzle(puzzle, true)
             gameManager.updateDaily()
             boardManager.cycle();
         } else {
+            console.log('old daily')
             boardManager.loadFromSave(true)
+            const event = new CustomEvent('reviewMode', { detail: { daily: true } });
+           // document.dispatchEvent(event)
+            setTimeout(() => {document.dispatchEvent(new CustomEvent("reviewMode", {
+                detail:
+                    { daily: true }
+            }))}, 1 );
         }
     },
     enterPractice: function () {
@@ -110,7 +119,6 @@ const gameManager = {
         let daily = gameManager.dailyMode
         storage.addToStats(guesses, gameManager.dailyMode)
         let streak = storage.getStreak(daily).current
-
         const event = new CustomEvent('endGame', {
             detail: {
                 win: true,
@@ -123,6 +131,24 @@ const gameManager = {
         });
         document.dispatchEvent(event);
         console.log('event dispatched')
+    },
+    handleLoss: function() {
+        console.log('lost')
+        let guesses = boardManager.totalGuesses()
+        let daily = gameManager.dailyMode
+        storage.addToStats("X", gameManager.dailyMode)
+        let streak = storage.getStreak(daily).current
+        const event = new CustomEvent('endGame', {
+            detail: {
+                win: false,
+                guesses: guesses,
+                boards: boardManager.boards,
+                streak: streak,
+                daily: daily,
+                dailyNo: gameManager.getDay(),
+            }
+        });
+        document.dispatchEvent(event);
     }
 
 }
@@ -146,4 +172,9 @@ document.addEventListener('switchMode', (e) => {
 
 document.addEventListener('submit', (e) => {
     boardManager.handleSubmitWord(gameManager.dailyMode)
+})
+
+document.addEventListener('newPractice', (e) => {
+    gameManager.resetGame()
+    gameManager.enterPractice()
 })

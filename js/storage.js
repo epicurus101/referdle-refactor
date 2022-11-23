@@ -7,7 +7,7 @@ const storage = {
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
             localStorage.clear()
-        //    localStorage.setItem("storageVersion", storage.version)
+            localStorage.setItem("storageVersion", storage.version)
         }
     },
     doesKeyExist: function(str){
@@ -23,7 +23,7 @@ const storage = {
     getSave: function(daily){
         if (storage.saveExists(daily)){
             let save = localStorage.getItem(daily ? "saveGame-D" : "saveGame-P")
-            console.log("here's the save we're getting: ", save)
+        //    console.log("here's the save we're getting: ", save)
             return JSON.parse(save)
         }
     },
@@ -38,7 +38,7 @@ const storage = {
         localStorage.setItem("lastDaily", day)
     },
     getSaveStatus: function(daily) {
-        console.log('getting status for daily?', daily)
+     //   console.log('getting status for daily?', daily)
         if (storage.saveExists(daily)) {
             return process.saveStatus(storage.getSave(daily))
         } else {
@@ -65,9 +65,9 @@ const storage = {
         let key = daily ? "stats-D" : "stats-P"
         if (storage.doesKeyExist(key)) {
             let save = localStorage.getItem(key)
-            console.log('load stats', save)
+      //      console.log('load stats', save)
             let parsed = JSON.parse(save)
-            console.log('here is the parsed version', parsed)
+   //         console.log('here is the parsed version', parsed)
             return parsed
         } else {
             return []
@@ -75,7 +75,7 @@ const storage = {
     },
 
     saveCurrentState: function(boards, daily){
-        console.log(`saving daily? ${daily}`, boards)
+      //  console.log(`saving daily? ${daily}`, boards)
         let objectArray = [];
         for (let i = 1; i < boards.length; i++) {
             const board = boards[i];
@@ -84,7 +84,7 @@ const storage = {
         }
         let str = JSON.stringify(objectArray);
         let key = daily ? "saveGame-D" : "saveGame-P"
-        console.log("saving a game with key ", key)
+     //   console.log("saving a game with key ", key)
         localStorage.setItem(key, str);
     },
 

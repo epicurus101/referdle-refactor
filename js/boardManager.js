@@ -72,7 +72,7 @@ const boardManager = {
         const comparisonResult = logic.getComparison(currentWordArr, targetWordArr);
 
         if (currentWordArr.length !== 5) {
-            const event = new CustomEvent('showDictModal', {
+            const event = new CustomEvent('showDictPopup', {
                 detail: {
                     board: board,
                     message: "MUST BE FIVE LETTERS"
@@ -81,7 +81,7 @@ const boardManager = {
             document.dispatchEvent(event);
             return;
         } else if (!dictionary.words.includes(currentWord) && currentWord != board.targetWord) {
-            const event = new CustomEvent('showDictModal', {
+            const event = new CustomEvent('showDictPopup', {
                 detail: {
                     board: board,
                     message: "NOT IN DICTIONARY"
@@ -114,7 +114,7 @@ const boardManager = {
             storage.saveCurrentState(boardManager.boards, dailyMode);
             keyboard.allowInput = false;
             boardManager.clearAllHighlighting();
-            setTimeout(handleLoss, interval * 6);
+            setTimeout(gameManager.handleLoss, interval * 8);
         } else {
             setTimeout(keyboard.update, interval * 6, board);
             board.next();

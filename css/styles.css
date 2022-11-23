@@ -240,7 +240,7 @@
     cursor: pointer;
   }
 
-  #dictModal {
+  #dict-popup {
     position: absolute;
     z-index: 1;
     background-color: var(--orange);
@@ -255,14 +255,14 @@
 
   #menu-button:hover
    {
-    filter: brightness(60%);
+    filter: brightness(120%);
   }
 
   #menu-button:active {
     background-color: var(--darkGrey);
   }
 
-  #menuModal {
+  #menu-popup {
     position: absolute;
     z-index: 10;
     background-color: var(--darkGrey);
@@ -273,7 +273,7 @@
     font-size: 1rem;
   }
 
-  .menuItem {
+  .menu-item {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -283,20 +283,20 @@
     font-family: customWebFont;
   }
 
-  .menuItem:hover,
-  .menuItem:focus {
+  .menu-item:hover,
+  .menu-item:focus {
     background-color: var(--black);
     text-decoration: none;
     cursor: pointer;
   }
 
-  .menuText {
+  .menu-text {
     display: block;
     text-align: right;
     padding: 1px 10px;
   }
 
-  .menuLogo {
+  .menu-logo {
     display: block;
 
   }
