@@ -2,7 +2,7 @@ import { EndGameModal } from "./EndGameModal.js"
 import { HelpModal } from "./HelpModal.js"
 import { AboutModal } from "./AboutModal.js"
 import { StatsModal } from "./StatsModal.js"
-import { SureModal } from "./sureModal.js"
+import { SureModal } from "./SureModal.js"
 import { Modal } from "./Modal.js"
 
 const modalManager = {
