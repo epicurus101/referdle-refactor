@@ -39,6 +39,9 @@
     --orange: rgb(255,165,0);
     --height: 100;
     --width: 100;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
   }
   
   #container {
@@ -79,6 +82,7 @@
   
   .board {
     border: 1px solid var(--darkGrey);
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -216,10 +220,8 @@
 
   .modal-image {
     margin: auto;
-    /* padding: 20px; */
     width: 100%;
     border: 0px;
-    /* max-height: 80%; */
   } 
 
   .modal-body {
@@ -338,11 +340,10 @@
 
   /* Stats Page Stuff */
 
-  #stat-mode-button-holder {
-    display: flex;
-    border: 1px solid var(--black);
+  .button-holder {
+    text-align: center;
     flex-direction: row;
-    margin: auto 25%;
+    margin: auto;
     justify-content: baseline;
   }
 
@@ -350,9 +351,12 @@
 .stat-mode-button, .play-mode-button {
   color: black;
   position: relative;
+  display: inline-block;
   background-color: var(--midGrey);
   padding: 10px;
   font-size: 100%;
+  width:auto;
+  border-radius: 3px;
   /* width: 50%; */
   text-align: center;
   font-family: customWebFont;
@@ -370,10 +374,7 @@
   cursor: pointer;
 }
 
-.play-mode-button {
-  width:auto;
-  border-radius: 3px;
-}
+
 
 #textStatsHolder {
   /* background-color: lightseagreen; */
@@ -411,23 +412,16 @@
 
   /* SureModal Stuff */
 
-  #sure-mode-button-holder {
-    display: flex;
-
-    flex-direction: row;
-    margin: auto;
-    justify-content: space-around;
-  }
-
 
 .sure-mode-button {
   color: black;
   position: relative;
+  display: inline-block;
   background-color: var(--midGrey);
-  border: 1px solid var(--black);
   padding: 10px;
-  font-size: 1.5rem;
-  width: 25%;
+  font-size: 100%;
+  border-radius: 3px;
+  width: auto;
   text-align: center;
   font-family: customWebFont;
   box-sizing: border-box;
@@ -449,7 +443,7 @@
   font-size: 1.5rem;
   min-width: calc(var(--width) * 0.2px);
   max-width: calc(var(--width) * 0.2px);
-  border-radius: 10px;
+  border-radius: 3px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -467,7 +461,7 @@
   position: absolute;
   display: table;
   z-index: 100;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: var(--black);
   color: var(--offWhite);
   text-align: center;

@@ -15,7 +15,7 @@ const gameManager = {
         } else {
             buttons[1].onclick()
         }
-      //  modalManager.test()
+        modalManager.new()
     },
 
 

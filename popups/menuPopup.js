@@ -1,4 +1,4 @@
-import { common } from "../js/contents.js";
+import { common , gameManager} from "../js/contents.js";
 
 const menuPopup = document.getElementById("menu-popup");
 menuPopup.style.display = "none"
@@ -44,6 +44,10 @@ function showMenu() {
     ]
 
     for (let index = 0; index < data.length; index++) {
+        if (index == 3 && gameManager.dailyMode == true) {
+            continue
+        }
+
         let inf = data[index];
 
         const element = document.createElement("div")

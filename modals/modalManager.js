@@ -4,6 +4,7 @@ import { AboutModal } from "./AboutModal.js"
 import { StatsModal } from "./StatsModal.js"
 import { SureModal } from "./SureModal.js"
 import { Modal } from "./Modal.js"
+import { NewPlayerModal } from "./newPlayerModal.js"
 
 const modalManager = {
 
@@ -33,6 +34,10 @@ const modalManager = {
     },
     showSure: function(e){
         let modal = new SureModal(e)
+        modalManager.add(modal.modal)
+    },
+    new: function(e){
+        let modal = new NewPlayerModal(e)
         modalManager.add(modal.modal)
     }
 }

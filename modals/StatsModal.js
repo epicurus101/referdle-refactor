@@ -11,6 +11,10 @@ export class StatsModal extends Modal {
         this.replaceHeading("Statistics")
         this.content.appendChild(document.createElement("br"))
 
+        let h1 = document.createElement("div")
+        h1.classList.add("button-holder")
+        this.content.appendChild(h1)
+
         let b1 = document.createElement("div")
         b1.textContent = "Practice"
         b1.classList.add("stat-mode-button")
@@ -22,18 +26,16 @@ export class StatsModal extends Modal {
         let buttons = [b1,b2]
 
         buttons.forEach(element => {
-            this.content.appendChild(element)
+            h1.appendChild(element)
             element.style.fontSize = (this.sideW / 20) + 'px'
             element.onclick = (e) => {
                 if (e) {e.stopPropagation()}
                 buttons.forEach(b => {
-                    b.style.color = uColours.offWhite
-                    b.style.backgroundColor = uColours.black
-                    b.style.border = "0px"
+                    b.style.color = uColours.black
+                    b.style.backgroundColor = uColours.offWhite
                 });
                 element.style.color = uColours.black
                 element.style.backgroundColor = uColours.yellow
-                element.style.border = "1px solid rgb(0,0,0)"
                 this.switchStats(element.textContent == "Daily")
             }
         }); 

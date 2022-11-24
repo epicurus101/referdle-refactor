@@ -14,19 +14,24 @@ export class SureModal extends Modal {
         this.content.appendChild(text)
         this.content.appendChild(document.createElement("br"))
 
+        let h1 = document.createElement("div")
+        h1.classList.add("button-holder")
+        this.content.appendChild(h1)
+
         let b1 = document.createElement("div")
         b1.textContent = "Keep Playing"
+        b1.style.backgroundColor = uColours.green
         b1.classList.add("sure-mode-button")
 
         let b2 = document.createElement("div")
         b2.textContent = "Abandon"
+        b2.style.backgroundColor = uColours.yellow
         b2.classList.add("sure-mode-button")
 
         let buttons = [b1, b2]
         buttons.forEach(element => {
-            this.content.appendChild(element)
+            h1.appendChild(element)
             console.log("changing a button")
-            //element.style.fontSize = (width / 100) + 'px'
             element.onclick = () => {
 
                 console.log("clicked")

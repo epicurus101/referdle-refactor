@@ -7,7 +7,7 @@ const storage = {
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
             localStorage.clear()
-        //    localStorage.setItem("storageVersion", storage.version)
+            localStorage.setItem("storageVersion", storage.version)
         }
     },
     doesKeyExist: function(str){
