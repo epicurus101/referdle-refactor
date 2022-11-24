@@ -86,6 +86,8 @@ document.addEventListener('showTips', ()=> {
     window.open("tips.html");
 })
 
+// need to make sure these are linked in properly!
+
 document.addEventListener('endGame', ()=> {
     reviewMode = true
 })

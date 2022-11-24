@@ -29,9 +29,9 @@ let statElement = {
                 obj[27] = obj[27] + 1
             } else if (element == "X") {
                 obj[27] = 1
-            } else if (element in obj) {
+            } else if (element in obj && element != "B") {
                 obj[element] = obj[element] + 1
-            } else {
+            } else if (element != "B") {
                 obj[element] = 1
             }
         });

@@ -99,7 +99,7 @@ const boardManager = {
             board.success = true;
             board.guessedWordCount += 1;
             storage.saveCurrentState(boardManager.boards, dailyMode);
-            setTimeout(keyboard.update, interval * 6, board);
+         //   setTimeout(keyboard.update, interval * 6, board);
             if (boardManager.allBoardsComplete()) {
                 console.log("win state!")
                 keyboard.allowInput = false;
@@ -154,6 +154,7 @@ const boardManager = {
 export {boardManager}
 
 document.addEventListener('boardSelect', (e) => {
+    console.log('board clicked!')
     const num = e.detail.index;
     const board = boardManager.boards[num]
     if (num == 0 || board.success) { return }
@@ -166,6 +167,8 @@ document.addEventListener('boardSelect', (e) => {
     boardManager.boards[0].highlightRow(e.detail.index - 1);
     keyboard.reset();
     keyboard.update(board);
+    console.log(board);
+    console.log('keyboard updated!')
 });
 
 document.addEventListener('excludeLetter', (e) => {

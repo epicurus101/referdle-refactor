@@ -18,8 +18,7 @@ export class HelpModal extends Modal {
 
         const img = new Image();
         img.src = "images/help_fires.jpg"
-        img.style.width = (common.width * 0.7) + 'px'
-        img.style.height = (common.width * 0.7 * 286 / 500) + 'px'
+        img.classList.add("modal-image")
         this.content.appendChild(img)
 
         const text2 = document.createElement("div");

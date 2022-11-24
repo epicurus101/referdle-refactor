@@ -19,7 +19,7 @@ function create(daily) {
     modal.appendChild(child)
     child.style.verticalAlign = "middle"
     child.style.whiteSpace = "pre-wrap";
-    child.style.fontSize = common.width * 0.03 + 'px'
+    child.style.fontSize = common.width * 0.035 + 'px'
     child.style.fontVariantNumeric = "tabular-nums";
 
     if (daily) {
