@@ -4,10 +4,7 @@ const gameManager = {
     firstDay: new Date("2 Nov 2022"),
     dailyMode: null,
     startup: function () {
-        let bc = document.getElementById("board-container")
-        let sq = document.querySelector(".square")
-        let sqHeight = sq.offsetHeight
-        bc.style.fontSize = sqHeight * 0.6 + 'px'
+
 
         let buttons = document.querySelectorAll(".play-mode-button")
         if (gameManager.isGameInProgress(true) || gameManager.isDailyAvailable()) {
@@ -19,11 +16,6 @@ const gameManager = {
             modalManager.new()
             storage.rememberPlayer()
         }
-        let board = boardManager.boards[1]
-        console.log(`board height: ${board.boardDiv.client}`)
-        console.log(`title height: ${board.title.offsetHeight}`)
-        console.log(`container height: ${board.contDiv.offsetHeight}`)
-        
 
     },
 

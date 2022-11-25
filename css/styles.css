@@ -39,6 +39,8 @@
     --orange: rgb(255,165,0);
     --height: 100;
     --width: 100;
+    --squareHeight: 100;
+    --keyHeightAdjust: 0;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
@@ -81,7 +83,7 @@
   }
   
   .board {
-    border: 1px solid var(--darkGrey);
+    border: 2px solid var(--darkGrey);
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -117,9 +119,9 @@
   }
   
   .square {
-    border: 2px solid var(--darkGrey);
+    border: 1px solid var(--darkGrey);
     min-width: 10px;
-    aspect-ratio: 1;
+    height: calc(var(--squareHeight) * 1px);
     color: var(--offWhite);
     text-transform: uppercase;
     padding: 0px;
@@ -131,7 +133,7 @@
   }
   
   #keyboard-container {
-    height: 150px;
+    height: calc(150px + var(--keyHeightAdjust) * 3px);
   }
   
   .keyboard-row {
@@ -148,7 +150,7 @@
     font-size: 15px;
     padding: 0px;
     border: 1px solid var(--midGrey);
-    height: 46px;
+    height: calc(46px + var(--keyHeightAdjust) * 1px);
     cursor: pointer;
     background-color: var(--midGrey);
     color: var(--offWhite);
