@@ -30,6 +30,7 @@ const keyboard = {
         })
     },
     keyHandler: function (letter) {
+        if (!keyboard.allowInput) {return}
         if (letter === 'enter') {
             const event = new CustomEvent('submit');
             document.dispatchEvent(event);
@@ -50,6 +51,7 @@ const keyboard = {
         }
     },
     longpressHandler: function (letter) {
+        if (!keyboard.allowInput) {return}
         if (!keyboard.standardKeys.includes(letter)) {
             return;
         } else {
@@ -122,6 +124,7 @@ let keyTimers = {};
 let responded = new Set();
 
 document.addEventListener('keydown', function (event) {
+    if (!keyboard.allowInput) {return}
     let str = event.key.toLowerCase();
     if (str == "backspace") {
         str = "del";
@@ -140,6 +143,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('keyup', function (event) {
+    if (!keyboard.allowInput) {return}
     let str = event.key.toLowerCase();
     if (str == "backspace") {
         keyboard.keyHandler("del");

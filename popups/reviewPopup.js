@@ -1,4 +1,4 @@
-import {gameManager, common} from  '../js/contents.js'
+import {gameManager, common, keyboard} from  '../js/contents.js'
 
 let interval
 
@@ -21,6 +21,7 @@ function create(daily) {
     child.style.whiteSpace = "pre-wrap";
     child.style.fontSize = common.width * 0.035 + 'px'
     child.style.fontVariantNumeric = "tabular-nums";
+    keyboard.allowInput = false;
 
     if (daily) {
         let nextDay = gameManager.firstDay.getTime() + (gameManager.getDay() + 1) * (1000 * 60 * 60 * 24)

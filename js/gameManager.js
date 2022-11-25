@@ -95,6 +95,8 @@ const gameManager = {
         } else {
             console.log('old daily')
             boardManager.loadFromSave(true)
+            keyboard.allowInput = false;
+            boardManager.clearAllHighlighting()
             const event = new CustomEvent('reviewMode', { detail: { daily: true } });
            // document.dispatchEvent(event)
             setTimeout(() => {document.dispatchEvent(new CustomEvent("reviewMode", {
@@ -105,6 +107,7 @@ const gameManager = {
     },
     enterPractice: function () {
         gameManager.processPractice()
+        keyboard.allowInput = true
         if (gameManager.isGameInProgress(false)) {
             boardManager.loadFromSave(false)
             boardManager.cycle();
