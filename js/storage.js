@@ -2,12 +2,12 @@ import { process } from "./contents.js";
 
 
 const storage = {
-    version: "1.01",
+    version: "1.02",
     initialise: function(){
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
             localStorage.clear()
-            localStorage.setItem("storageVersion", storage.version)
+        //    localStorage.setItem("storageVersion", storage.version)
         }
     },
     doesKeyExist: function(str){
@@ -16,6 +16,9 @@ const storage = {
     },
     returningPlayer: function(){
         return storage.doesKeyExist("returningPlayer")
+    },
+    rememberPlayer: function(){
+        localStorage.setItem("returningPlayer", true)
     },
     saveExists: function(daily){
         return storage.doesKeyExist(daily ? "saveGame-D" : "saveGame-P")

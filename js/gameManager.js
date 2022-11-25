@@ -15,7 +15,16 @@ const gameManager = {
         } else {
             buttons[1].onclick()
         }
-        modalManager.new()
+        if (!storage.returningPlayer()) {
+            modalManager.new()
+            storage.rememberPlayer()
+        }
+        let board = boardManager.boards[1]
+        console.log(`board height: ${board.boardDiv.client}`)
+        console.log(`title height: ${board.title.offsetHeight}`)
+        console.log(`container height: ${board.contDiv.offsetHeight}`)
+        
+
     },
 
 

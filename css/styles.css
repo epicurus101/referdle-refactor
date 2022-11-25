@@ -100,7 +100,7 @@
 
     color: var(--offWhite);
     font-size: 70%;
-    margin: 0.4rem 0.4rem;
+    padding: 5px;
     text-align: left;
     font-family: customWebFont;
   }

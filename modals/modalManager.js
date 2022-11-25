@@ -4,7 +4,7 @@ import { AboutModal } from "./AboutModal.js"
 import { StatsModal } from "./StatsModal.js"
 import { SureModal } from "./SureModal.js"
 import { Modal } from "./Modal.js"
-import { NewPlayerModal } from "./newPlayerModal.js"
+import { NewPlayerModal } from "./NewPlayerModal.js"
 
 const modalManager = {
 
