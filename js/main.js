@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let board = boardManager.boards[1]
         let sqWidth = sq.offsetWidth
         bc.style.fontSize = sqWidth * 0.6 + 'px'
-
+        r.style.setProperty(`--squareHeight`, sqWidth) // must first set square in order to measure deficit
         console.log('width is ', sqWidth)
 
 
@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let shortfall = (3 * board.boardDiv.offsetHeight) - container.offsetHeight
         let maxReduction = sqWidth * 0.2 * 15
         let actualReduction = Math.max(Math.min(shortfall, maxReduction)/15,0)
+        console.log(shortfall, maxReduction, actualReduction)
         let sqHeight = sqWidth - actualReduction
         r.style.setProperty(`--squareHeight`, sqHeight)
 
