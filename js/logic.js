@@ -1,4 +1,4 @@
-import { dictionary } from "./contents.js";
+import { dictionary, derivatives } from "./contents.js";
 
 const logic = {
 
@@ -26,6 +26,10 @@ const logic = {
             }
         }
         return result;
+    },
+
+    puzzleTest: function(){
+
     },
 
     newPuzzle: function(){
@@ -98,6 +102,16 @@ const logic = {
         console.log(words);
         return words;
     
+    },
+
+    applyFilter: function(pool){
+        let word
+        while (word == null) {
+            const dummy = pool.randomItem();
+            if (derivatives.words.includes(dummy) || Math.random() > 0.95) {
+                endWord = dummy;
+            }
+        }
     }
 
 

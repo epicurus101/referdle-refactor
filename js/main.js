@@ -1,4 +1,4 @@
-import { uColours, keyboard, boardManager, dictionary, puzzles, storage, gameManager, common } from './contents.js';
+import { uColours, keyboard, boardManager, dictionary, derivatives, puzzles, storage, gameManager, common } from './contents.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         storage.initialise();
         await puzzles.load();
         await dictionary.load();
+        await derivatives.load();
         gameManager.startup();
     }
 

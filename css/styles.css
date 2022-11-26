@@ -324,7 +324,7 @@
     font-size: 20px;
     text-align: center;
     width: 100%;
-    height: calc(var(--squareHeight) * 2px);
+    height: calc(var(--squareHeight) * 1.5px);
     /* height: 75px; */
     margin: auto;
     padding: calc(var(--width) * 0.01px) 0px;

@@ -6,6 +6,7 @@ import { boardManager } from './boardManager.js';
 import { Board } from './board.js';
 import { logic } from './logic.js';
 import { dictionary } from './dictionary.js';
+import { derivatives } from './derivatives.js';
 import { puzzles } from './puzzles.js';
 import { process } from './process.js';
 import { storage } from './storage.js';
@@ -28,6 +29,7 @@ export {
     Board,
     logic,
     dictionary,
+    derivatives,
     puzzles,
     process,
     storage,

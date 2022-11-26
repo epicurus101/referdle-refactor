@@ -50,7 +50,7 @@ const process = {
     boardToObject: function (board) {
         let object = {};
         object.targetWord = board.targetWord;
-        object.guessedWords = board.guessedWords;
+        object.guessedWords = JSON.parse(JSON.stringify(board.guessedWords));
         if (object.guessedWords.length > board.guessedWordCount) {
             object.guessedWords.pop()
             object.guessedWords.push([]) //cleanup half words!

@@ -124,7 +124,6 @@ let keyTimers = {};
 let responded = new Set();
 
 document.addEventListener('keydown', function (event) {
-    if (!keyboard.allowInput) {return}
     let str = event.key.toLowerCase();
     if (str == "backspace") {
         str = "del";
@@ -143,7 +142,6 @@ document.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('keyup', function (event) {
-    if (!keyboard.allowInput) {return}
     let str = event.key.toLowerCase();
     if (str == "backspace") {
         keyboard.keyHandler("del");

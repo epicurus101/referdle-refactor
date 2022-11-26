@@ -13,7 +13,9 @@ let dictionary = {
         } else {
             dictionary.words = await dictionary.download()
         }
+
     },
+
 
     download : async function() {
         const response = await fetch('dictionary.json');
@@ -25,6 +27,7 @@ let dictionary = {
         console.log("dictionary loaded from web and saved");
         return array
     },
+
 
     save: function(dict){
         let str = JSON.stringify(dict);
