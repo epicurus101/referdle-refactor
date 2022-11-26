@@ -21,7 +21,7 @@ let derivatives = {
         const response = await fetch('derivatives.json');
         let array = await response.json();
         array.forEach((word, index) => {
-            array[index] = word.toLowerCase();
+            array[index] = word.toUpperCase();
         })
         derivatives.save(array);
         console.log("derivatives loaded from web and saved");

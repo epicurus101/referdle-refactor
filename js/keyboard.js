@@ -4,7 +4,7 @@ const keyboard = {
 
     allowInput: false,
     keys: document.querySelectorAll(".keyboard-row button"),
-    standardKeys: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+    standardKeys: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
 
     initialise: function () {
         keyboard.keys.forEach(key => {
@@ -31,11 +31,11 @@ const keyboard = {
     },
     keyHandler: function (letter) {
         if (!keyboard.allowInput) {return}
-        if (letter === 'enter') {
+        if (letter === 'ENTER') {
             const event = new CustomEvent('submit');
             document.dispatchEvent(event);
             return;
-        } else if (letter === 'del') {
+        } else if (letter === 'DEL') {
             const event = new CustomEvent('delete');
             document.dispatchEvent(event);
             return;
@@ -124,9 +124,9 @@ let keyTimers = {};
 let responded = new Set();
 
 document.addEventListener('keydown', function (event) {
-    let str = event.key.toLowerCase();
-    if (str == "backspace") {
-        str = "del";
+    let str = event.key.toUpperCase();
+    if (str == "BACKSPACE") {
+        str = "DEL";
     }
     if (keyTimers[str] == null) {
         keyTimers[str] = Date.now();
@@ -142,12 +142,12 @@ document.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('keyup', function (event) {
-    let str = event.key.toLowerCase();
-    if (str == "backspace") {
-        keyboard.keyHandler("del");
-    } else if (str == "enter") {
-        keyboard.keyHandler("enter");
-    } else if (str == "tab") {
+    let str = event.key.toUpperCase();
+    if (str == "BACKSPACE") {
+        keyboard.keyHandler("DEL");
+    } else if (str == "ENTER") {
+        keyboard.keyHandler("ENTER");
+    } else if (str == "TAB") {
         const event = new CustomEvent('cycle');
         document.dispatchEvent(event);
     } else if (keyTimers[str]) {

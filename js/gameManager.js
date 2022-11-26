@@ -88,7 +88,7 @@ const gameManager = {
         } else if (gameManager.isDailyAvailable()) { // still need to work through this!!!
             console.log('new daily')
             let puzzle = puzzles.get(gameManager.getDay());
-            puzzle.forEach((word, index) => { puzzle[index] = word.toLowerCase() })
+            puzzle.forEach((word, index) => { puzzle[index] = word.toUpperCase() })
             boardManager.loadPuzzle(puzzle, true)
             gameManager.updateDaily()
             boardManager.cycle();

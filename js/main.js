@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     initialisation()
 
     async function initialisation(){
+        storage.initialise();
         colourConform();
         playButtons();
         keyboard.initialise();
         boardManager.createBoards();
         dimensionConform();
-        storage.initialise();
         await puzzles.load();
         await dictionary.load();
         await derivatives.load();

@@ -21,7 +21,7 @@ let dictionary = {
         const response = await fetch('dictionary.json');
         let array = await response.json();
         array.forEach((word, index) => {
-            array[index] = word.toLowerCase();
+            array[index] = word.toUpperCase();
         })
         dictionary.save(array);
         console.log("dictionary loaded from web and saved");
