@@ -59,7 +59,7 @@ export class Board {
     getAllBoardComparisons(){
         let comparisons = []
         let target = Array.from(this.targetWord)
-        for (let i = 0; i < this.guessedWords.length; i++) {
+        for (let i = 0; i < this.guessedWordCount; i++) {
             let guess = this.guessedWords[i];
             let comparison = logic.getComparison(guess, target);
             comparisons.push(comparison);
