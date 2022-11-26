@@ -15,6 +15,14 @@ Array.prototype.matches = function matches(x) {
     return true;
 }
 
+Array.prototype.toTally = function toTally() {
+  let tally = {}
+  this.forEach( (item) => {
+    tally[item] = tally[item] ? tally[item] + 1 : 1
+  })
+  return tally
+}
+
 Set.prototype.randomItem = function random() {
     return Array.from(this).randomItem();
 }
@@ -31,6 +39,17 @@ Set.prototype.remove = function remove(x) {
           this.delete(item);
         }
       });
+}
+
+Set.prototype.intersection = function intersection(other) {
+  const _intersection = new Set();
+  let array = Array.from(this.values())
+  array.forEach( (word) => {
+    if (other.has(word)) {
+      _intersection.add(word);
+    }
+  })
+  return _intersection;
 }
 
 String.prototype.uniqueChars = function uniqueChars() {

@@ -2,7 +2,7 @@ import { process } from "./contents.js";
 
 
 const storage = {
-    version: "1.05",
+    version: "1.06",
     initialise: function(){
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
