@@ -2,6 +2,7 @@ import {gameManager, common, keyboard, animateCSS} from  '../js/contents.js'
 
 let interval
 let child
+let repeating = false
 
 document.addEventListener('reviewMode', (e) => {
     console.log('heard review mode')
@@ -47,6 +48,7 @@ function create(daily) {
             destroy()
             document.dispatchEvent(new CustomEvent('newPractice'))
         }
+        repeating = true
         repeatAnim()
 
     }
@@ -58,9 +60,9 @@ function repeatAnim(){
 
     const holder = document.getElementById("top-bar")
 
-    if (holder) {
-        console.log(holder)
-        console.log('trying to animate')
+    if (holder && repeating) {
+        // console.log(holder)
+        // console.log('trying to animate')
         animateCSS('#top-bar', 'pulse').then(() => { // wow learn how this works some time!
             setTimeout(repeatAnim, 10000)
         });
@@ -91,6 +93,7 @@ function destroy(){
     if (holder) {
         holder.classList.remove('animate__animated', 'animate__pulse')
     }
+    // repeating = false;
 
     if (interval) { clearInterval(interval) }
     let popup = document.getElementById("reviewPopup")

@@ -64,7 +64,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
     const node = document.querySelector(element);
-    console.log("here's the node to animate", node)
+   // console.log("here's the node to animate", node)
 
     node.classList.add(`${prefix}animated`, animationName);
 

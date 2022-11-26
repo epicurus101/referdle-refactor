@@ -7,10 +7,10 @@ let statElement = {
 
     getGraph: function (daily) {
         let stats = storage.loadStats(daily)
-        console.log('here are stats for graph', stats)
+     //   console.log('here are stats for graph', stats)
 
         let processed = statElement.processForGraph(stats)
-        console.log('stats:',processed)
+     //   console.log('stats:',processed)
         let graph = statElement.getFormattedGraph(processed, stats.at(-1) ? stats.at(-1) : null)
 
         return graph
@@ -19,11 +19,11 @@ let statElement = {
 
     processForGraph: function (stats) {
 
-        console.log(stats)
+    //    console.log(stats)
         let obj = {}
 
         Array.from(stats).forEach(function (element) {
-            console.log(element);
+       //     console.log(element);
 
             if (element == "X" && '27' in obj) {
                 obj[27] = obj[27] + 1
@@ -44,7 +44,7 @@ let statElement = {
         let largest = Math.max(...Object.values(stats))
         let scale = statElement.getScale(largest)
 
-        console.log(stats)
+    //    console.log(stats)
 
         const graph = document.createElement("div");
         graph.setAttribute("id", "statsGraph")
@@ -55,7 +55,7 @@ let statElement = {
         graph.style.width = statElement.sideW + 'px';
         graph.style.alignItems = 'end'
         graph.style.margin = '0px auto'
-        console.log(graph)
+   //     console.log(graph)
 
         for (let index = 0; index < 24; index++) {
             if (index == 0) {

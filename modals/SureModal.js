@@ -41,11 +41,11 @@ export class SureModal extends Modal {
                 if (element.textContent == "Keep Playing") {
                     this.closeModal()
                 } else if (element.textContent == "Abandon") {
+                    document.dispatchEvent(new CustomEvent('abandonGame'))
                     this.closeModal()
                 }
             }
         });
-
     }
 
     onOpen() {

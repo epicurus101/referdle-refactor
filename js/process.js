@@ -30,7 +30,7 @@ const process = {
         }
     },
     calculateStreak: function (stats) {
-        console.log('calculate streak using:', stats)
+      //  console.log('calculate streak using:', stats)
         let current = null
         let streak = 0
         let max = 0
@@ -45,7 +45,10 @@ const process = {
                 max = Math.max(streak,max)
             }
         }
-        return {current: streak, max: max}
+        if (current == null) {
+            current = streak;
+        }
+        return {current: current, max: max}
     },
     boardToObject: function (board) {
         let object = {};

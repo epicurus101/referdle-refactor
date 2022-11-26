@@ -1,7 +1,7 @@
 import { storage, keyboard, boardManager, puzzles, logic, modalManager } from "./contents.js"
 
 const gameManager = {
-    firstDay: new Date("2 Nov 2022"),
+    firstDay: new Date("27 Oct 2022"),
     dailyMode: null,
     startup: function () {
 
@@ -177,6 +177,13 @@ document.addEventListener('submit', (e) => {
 })
 
 document.addEventListener('newPractice', (e) => {
+    gameManager.resetGame()
+    gameManager.enterPractice()
+})
+
+document.addEventListener('abandonGame', (e) => {
+    storage.addToStats("X", gameManager.dailyMode)
+    storage.deleteSave(gameManager.dailyMode)
     gameManager.resetGame()
     gameManager.enterPractice()
 })

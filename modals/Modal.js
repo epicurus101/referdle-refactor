@@ -9,6 +9,7 @@ export class Modal {
 
     constructor(id){
         this.id = id
+        console.log("new modal", id)
         this.modal = document.createElement("div")
         this.modal.setAttribute("id", id)
         this.modal.classList.add("modal")
