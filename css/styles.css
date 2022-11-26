@@ -40,6 +40,7 @@
     --height: 100;
     --width: 100;
     --squareHeight: 100;
+    --squareWidth: 100;
     --keyHeightAdjust: 0;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -147,7 +148,7 @@
   .keyboard-row button {
     font-family: inherit;
     font-weight: bold;
-    font-size: 15px;
+    font-size: calc(var(--squareWidth) * 0.35px);
     padding: 0px;
     border: 1px solid var(--midGrey);
     height: calc(46px + var(--keyHeightAdjust) * 1px);

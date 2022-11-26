@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let board = boardManager.boards[1]
         let sqWidth = sq.offsetWidth
         bc.style.fontSize = sqWidth * 0.6 + 'px'
+        r.style.setProperty(`--squareWidth`, sqWidth) //used for some visual elements
         r.style.setProperty(`--squareHeight`, sqWidth) // must first set square in order to measure deficit
         console.log('width is ', sqWidth)
 
