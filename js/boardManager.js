@@ -167,8 +167,7 @@ document.addEventListener('boardSelect', (e) => {
     boardManager.boards[0].highlightRow(e.detail.index - 1);
     keyboard.reset();
     keyboard.update(board);
-    console.log(board);
-    console.log('keyboard updated!')
+    // console.log(board);
 });
 
 document.addEventListener('excludeLetter', (e) => {

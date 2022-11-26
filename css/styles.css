@@ -111,7 +111,7 @@
     border-top: 1px solid var(--darkGrey);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
+    grid-gap: 3px;
     flex: 1;
     padding: 5px;
     box-sizing: border-box;
@@ -312,6 +312,9 @@
 
   }
 
+  #top-bar {
+    z-index: 100;
+  }
 
   #reviewPopup {
     display: none;
@@ -321,6 +324,7 @@
     font-size: 20px;
     text-align: center;
     width: 100%;
+    height: calc(var(--squareHeight) * 2px);
     /* height: 75px; */
     margin: auto;
     padding: calc(var(--width) * 0.01px) 0px;

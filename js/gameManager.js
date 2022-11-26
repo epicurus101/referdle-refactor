@@ -160,10 +160,8 @@ const gameManager = {
 export { gameManager }
 
 document.addEventListener('switchMode', (e) => {
-    console.log('testing')
     let daily = (e.detail.to == "Daily")
     if (daily != gameManager.dailyMode) { // only respond to change
-        console.log('switching')
         gameManager.dailyMode = daily
         gameManager.resetGame()
         if (daily) {

@@ -1,13 +1,13 @@
 
 const process = {
     saveStatus: function(save){
-        console.log(save)
+        // console.log(save)
         let boards = []
         for (let i = 0; i < save.length; i++) {
             const board = save[i];
-            console.log("here's the board", board)
+            // console.log("here's the board", board)
             let result = process.boardStatus(board)
-            console.log("status: ", result)
+            // console.log("status: ", result)
             boards.push(result)
         }
         if (boards.includes("failed")) {
