@@ -1,8 +1,8 @@
-import { process } from "./contents.js";
+import { process, common } from "./contents.js";
 
 
 const storage = {
-    version: "1.06",
+    version: "1.07",
     initialise: function(){
         if (localStorage.getItem("storageVersion") != storage.version) {
             console.log('clearing data')
@@ -103,7 +103,7 @@ const storage = {
             targetWords.push(saveData.targetWord);
             board.loadFromSave(saveData);
         }
-        console.log(targetWords)
+        if (common.developerMode) {console.log(targetWords)}
         boards[0].setClueGrid(targetWords);
         for (let i = 0; i < boards.length-1; i++) {
             let board = boards[i+1]; // only does 1 to 5

@@ -28,8 +28,6 @@ export class NewPlayerModal extends Modal {
         head.style.display = "inline-block"
         holder.appendChild(head)
 
-        console.log(img.offsetHeight, img.offsetWidth)
-
         // let computed = window.getComputedStyle(holder)
         // console.log(computed.offsetHeight, computed.offsetWidth)
 
@@ -50,7 +48,6 @@ export class NewPlayerModal extends Modal {
 
         const img2 = new Image();
         img2.src = "images/grid_connect.png"
-        console.log(img2)
         img2.classList.add("modal-image")
         this.content.appendChild(img2)
 

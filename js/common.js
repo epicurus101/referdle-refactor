@@ -1,4 +1,5 @@
 let common = {
+    developerMode: false,
 
 }
 

@@ -31,7 +31,6 @@ export class SureModal extends Modal {
         let buttons = [b1, b2]
         buttons.forEach(element => {
             h1.appendChild(element)
-            console.log("changing a button")
             element.onclick = () => {
 
                 console.log("clicked")

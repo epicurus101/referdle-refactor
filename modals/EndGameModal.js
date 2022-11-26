@@ -25,7 +25,7 @@ export class EndGameModal extends Modal {
             document.dispatchEvent(new CustomEvent(`showCopiedPopup`));
             let shareText = copyText.get(e.detail)
             navigator.clipboard.writeText(shareText);
-            console.log(shareText)
+            if (common.developerMode) { console.log(shareText) }
         }
         this.content.appendChild(button)
         button.style.height = common.width * 0.075 + 'px'
@@ -57,7 +57,6 @@ export class EndGameModal extends Modal {
         super.onClose()
         let board = document.getElementById("board-container")
         board.style.filter = "blur(0)"
-        console.log("the daily is", this.daily)
         document.dispatchEvent(new CustomEvent("reviewMode", {
             detail:
                 { daily: self.daily }

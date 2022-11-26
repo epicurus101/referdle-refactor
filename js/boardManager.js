@@ -1,4 +1,4 @@
-import { Board, storage, uColours, keyboard, logic, dictionary, gameManager } from "./contents.js";
+import { Board, storage, uColours, keyboard, logic, dictionary, gameManager, common } from "./contents.js";
 
 const boardManager = {
     current: null,
@@ -39,7 +39,7 @@ const boardManager = {
         document.getElementById(`b${curr}-${sq}`).scrollIntoView(false);
     },
      loadPuzzle: function(puzzle, daily) {
-        console.log(puzzle)
+        if (common.developerMode) {console.log(puzzle)}
         boardManager.boards[0].setClueGrid(puzzle);
         for (let i = 1; i < boardManager.boards.length; i++) {
             const element = boardManager.boards[i];
