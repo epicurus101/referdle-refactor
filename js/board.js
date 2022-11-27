@@ -99,13 +99,6 @@ export class Board {
         }
     }
 
-
-    adjustText(){
-        squares.forEach(element => {
-            element.style.fontSize = `${element.offsetHeight * 0.60}px`
-        });
-    }
-
     highlightRow(index){
         for (let row = 0; row < 5; row++) {
             for (let space = 0; space < 5; space++) {
@@ -252,7 +245,6 @@ export class Board {
                 const letterEl = document.getElementById(`b${this.index}-${letterID}`);
                 letterEl.classList.add("animate__flipInX");
                 letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
-                letterEl.style.fontSize = `${letterEl.offsetHeight * 0.60}px`
             }, interval * letterIndex)
         })
     }

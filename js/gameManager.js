@@ -1,7 +1,7 @@
 import { storage, keyboard, boardManager, puzzles, logic, modalManager } from "./contents.js"
 
 const gameManager = {
-    firstDay: new Date("27 Oct 2022"),
+    firstDay: new Date("25 Nov 2022"),
     dailyMode: null,
     startup: function () {
 
