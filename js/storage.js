@@ -1,4 +1,4 @@
-import { process, common } from "./contents.js";
+import { process, common, GameResult } from "./contents.js";
 
 
 const storage = {
@@ -114,6 +114,24 @@ const storage = {
             }
         }
         return true;
+    },
+    resultExists: function(daily) {
+        let key = daily ? "saveResult-D" : "saveResult-P"
+        return storage.doesKeyExist(key)
+    },
+    saveResult: function(detail) {
+        let result = GameResult.loadFromEndGameEvent(detail)
+        let key = detail.daily ? "saveResult-D" : "saveResult-P"
+        localStorage.setItem(key, JSON.stringify(result))
+    },
+    loadResult: function(daily) {
+        let key = daily ? "saveResult-D" : "saveResult-P"
+        if (storage.doesKeyExist(key)) {
+            let str = localStorage.getItem(key)
+            return GameResult.loadFromString(str)
+        } else {
+            return GameResult.getBlank()
+        }
     },
      deleteSave: function(daily){
         localStorage.setItem(daily ? "saveGame-D" : "saveGame-P", null);

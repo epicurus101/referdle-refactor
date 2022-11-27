@@ -2,7 +2,7 @@ import {animateCSS} from '../js/contents.js'
 
 document.addEventListener('showCopiedPopup', (e) => {
 
-    let modal = document.getElementById("endGameModal")
+    let modal = e.detail.modal
     const content = modal.querySelector(".modal-content")
     const button = modal.querySelector('#share-button')
 
@@ -15,7 +15,7 @@ document.addEventListener('showCopiedPopup', (e) => {
     popup.appendChild(child)
     popup.setAttribute("id", `copiedPopup`);
     popup.classList.add("animate__animated");
-    popup.style.setProperty('--animate-duration', '2s');
+    popup.style.setProperty('--animate-duration', '4s');
 
     content.appendChild(popup)
     console.log(button.offsetTop, button.offsetLeft)

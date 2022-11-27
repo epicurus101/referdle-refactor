@@ -1,4 +1,4 @@
-import { Modal, statElement, common, copyText} from '../js/contents.js'
+import { Modal, statElement, common, storage} from '../js/contents.js'
 
 export class EndGameModal extends Modal {
 
@@ -22,19 +22,21 @@ export class EndGameModal extends Modal {
         button.setAttribute("id", "share-button")
         button.onclick = (e2) => {
             e2.stopPropagation();
-            document.dispatchEvent(new CustomEvent(`showCopiedPopup`));
-            let shareText = copyText.get(e.detail)
+            document.dispatchEvent(new CustomEvent(`showCopiedPopup`, {detail: {
+                modal: self.modal,
+            }}));
+            let result = storage.loadResult(e.detail.daily)
+            let shareText = result.getText()
             navigator.clipboard.writeText(shareText);
             if (common.developerMode) { console.log(shareText) }
         }
         this.content.appendChild(button)
         button.style.height = common.width * 0.075 + 'px'
 
-        let label = document.createElement("div")
-        label.textContent = "Share"
-        label.style.fontSize = common.width * 0.05 + 'px'
-        label.style.lineHeight = common.width * 0.05 + 'px'
-        label.style.marginLeft = '10px'
+        let label = document.createElement("label")
+        label.htmlFor = "share-button"
+        label.innerHTML = "Share result"
+        label.style.fontSize = common.width * 0.03 + 'px'
         button.appendChild(label)
 
         const img = new Image();

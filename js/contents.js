@@ -4,6 +4,7 @@ import {animateCSS} from './helpers.js';
 import { keyboard } from './keyboard.js';
 import { boardManager } from './boardManager.js';
 import { Board } from './board.js';
+import { GameResult } from './GameResult.js';
 import { logic } from './logic.js';
 import { dictionary } from './dictionary.js';
 import { derivatives } from './derivatives.js';
@@ -12,7 +13,6 @@ import { process } from './process.js';
 import { storage } from './storage.js';
 import { gameManager } from './gameManager.js';
 import { statElement } from './statElement.js';
-import { copyText } from './copyText.js';
 import { Modal } from '../modals/Modal.js';
 import { modalManager } from '../modals/modalManager.js';
 import { common } from './common.js';
@@ -27,6 +27,7 @@ export {
     keyboard,
     boardManager,
     Board,
+    GameResult,
     logic,
     dictionary,
     derivatives,
@@ -35,7 +36,6 @@ export {
     storage,
     gameManager,
     statElement,
-    copyText,
     Modal,
     modalManager,
     common

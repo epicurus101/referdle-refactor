@@ -104,12 +104,13 @@ export class Board {
             for (let space = 0; space < 5; space++) {
                 let num = (row * 5) + space
                 const element = this.squares[num];
+                element.style.filter = null;
                 if (row == index) {
                     element.style.border = `1px solid ${uColours.offWhite}`
-                    element.style.opacity = 1.0;
+                   element.style.opacity = 1.0;
                 } else {
                     element.style.border = `0px solid`
-                    element.style.opacity = 0.8;
+                   element.style.opacity = 0.8;
                 }
             }    
         }
