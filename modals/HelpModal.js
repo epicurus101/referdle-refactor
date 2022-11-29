@@ -39,7 +39,7 @@ export class HelpModal extends Modal {
         text3.textContent = `\r\n`
             + `You can enter words using either the on-screen keyboard or a proper keyboard.`
             + `\r\n\r\n`
-            + `You can use your guesses on any board in any order - just click or press the board you want to try.  If you are using a proper keyboard, \‘tab\’ will cycle through the boards.`
+            + `You can use your guesses on any board in any order - just click or press the board you want to try.  If you are using a proper keyboard pressing \'tab\' or \'space\' will cycle through the boards.`
             + `\r\n\r\n`
             + `To help you, you can use the on-screen keyboard to keep track of your deductions.  The keyboard will automatically turn keys dark grey / yellow / green for a particular board, just like Wordle. However in addition you can either long-press (or long-click or right-click with a mouse) to turn a key dark blue and indicate that you have ruled it out.  For example, you might know from Word 1 that the letter \‘F\’ never appears again in the Clue Grid.  Just long-press on the \‘F\’ key with Board 2 selected to turn that key dark.  If you have not made any guesses for Words 3-5 then the letter \‘F\’ will also go dark on those boards.`
             + `\r\n\r\n`
@@ -54,7 +54,6 @@ export class HelpModal extends Modal {
 
     onClose() {
         super.onClose()
-
     }
 
 

@@ -147,7 +147,7 @@ document.addEventListener('keyup', function (event) {
         keyboard.keyHandler("DEL");
     } else if (str == "ENTER") {
         keyboard.keyHandler("ENTER");
-    } else if (str == "TAB") {
+    } else if (str == "TAB" || str == " ") {
         const event = new CustomEvent('cycle');
         document.dispatchEvent(event);
     } else if (keyTimers[str]) {

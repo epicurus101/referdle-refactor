@@ -450,14 +450,21 @@
   background-color: var(--green);
   padding: 10px;
   font-size: 1.5rem;
-  min-width: calc(var(--width) * 0.35px);
-  max-width: calc(var(--width) * 0.35px);
+  min-width: calc(var(--width) * 0.31px);
+  max-width: calc(var(--width) * 0.31px);
   border-radius: 3px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0px auto;
+}
+
+#share-label {
+  white-space: pre;
+  font-size: calc(var(--width) * 0.03px);
+
+
 }
 
 #share-button:hover,

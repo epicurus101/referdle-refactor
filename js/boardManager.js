@@ -21,6 +21,7 @@ const boardManager = {
         storage.loadCurrentState(boardManager.boards,daily)
     },
     cycle: function(){
+        if (boardManager.allBoardsComplete()) {return}
         let curr = (boardManager.current != null) ? boardManager.current.index : 0;
         curr += 1;
         if (curr > 5) {
@@ -190,5 +191,9 @@ document.addEventListener('letterKey', (e) => {
 
 document.addEventListener('delete', (e) => {
     boardManager.current.handleDelete()
+})
+
+document.addEventListener('cycle', (e) => {
+    boardManager.cycle()
 })
 

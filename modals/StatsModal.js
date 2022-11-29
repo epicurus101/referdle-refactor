@@ -93,9 +93,9 @@ export class StatsModal extends Modal {
         button.style.height = common.width * 0.075 + 'px'
 
         let label = document.createElement("label")
+        label.setAttribute("id", "share-label")
         label.htmlFor = "share-button"
-        label.innerHTML = `Share latest ${daily ? "Daily" : "Practice"} result`
-        label.style.fontSize = common.width * 0.03 + 'px'
+        label.innerHTML = `Share latest\r\n${daily ? "Daily" : "Practice"} result`
         button.appendChild(label)
         
         const img = new Image();
