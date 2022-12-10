@@ -23,7 +23,7 @@ const process = {
         let lastWord = board.guessedWords.at(-1).join("")
         if (lastWord == board.targetWord) {
             return "completed"
-        } else if (board.guessedWords.length == 5) {
+        } else if (board.guessedWordCount == 5) {
             return "failed"
         } else {
             return "playable"

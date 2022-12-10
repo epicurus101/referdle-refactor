@@ -51,7 +51,6 @@ const logic = {
             puzzle = logic.failablePuzzle()
         } while (puzzle.length < 5)
         return puzzle
-
     },
 
     failablePuzzle: function(){
@@ -132,8 +131,6 @@ const logic = {
         //    console.log(words);
             return words;
         }
-
-    
     },
 
     applyFilter: function(pool){
