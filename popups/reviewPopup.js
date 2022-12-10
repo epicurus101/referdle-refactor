@@ -1,4 +1,4 @@
-import {gameManager, common, keyboard, animateCSS} from  '../js/contents.js'
+import { gameManager, common, keyboard, animateCSS, uColours } from '../js/contents.js'
 
 let interval
 let child
@@ -6,12 +6,14 @@ let repeating = false
 
 document.addEventListener('reviewMode', (e) => {
     console.log('heard review mode')
+    repeating = false;
     create(e.detail.daily)
 });
 
 function create(daily) {
     console.log('review');
-
+    var r = document.querySelector(':root'); //reset the review hover brightness to standard
+    r.style.setProperty('--reviewHover', 1.0);
     const modal = document.createElement("div")
     modal.setAttribute("id", "reviewPopup") // rename!!
     modal.style.display = "table";
@@ -31,19 +33,23 @@ function create(daily) {
         let ending = new Date();
         ending.setTime(nextDay);
         updateText()
-        function updateText(){
+        function updateText() {
             let remaining = getTimeRemaining(ending)
-            let hours = String(remaining.hours).padStart(2,"0")
-            let minutes = String(remaining.minutes).padStart(2,"0")
-            let seconds = String(remaining.seconds).padStart(2,"0")
+            let hours = String(remaining.hours).padStart(2, "0")
+            let minutes = String(remaining.minutes).padStart(2, "0")
+            let seconds = String(remaining.seconds).padStart(2, "0")
             child.textContent = `Next Daily Puzzle: ${hours}h${minutes}m${seconds}s.\r\n Switch to Practice mode to keep playing.`
         }
-        interval = setInterval(updateText,1000)
+        interval = setInterval(updateText, 1000)
 
     } else {
+        modal.style.backgroundColor = uColours.highlight;
+        modal.style.color = uColours.black;
+        modal.style.borderRadius = "3px"
+        r.style.setProperty('--reviewHover', 1.2); //light up on hover
         child.textContent = "> New Practice Puzzle <"
         child.style.fontSize = common.width * 0.04 + 'px'
-        modal.onclick = function(e) {
+        modal.onclick = function (e) {
             e.stopPropagation();
             destroy()
             document.dispatchEvent(new CustomEvent('newPractice'))
@@ -56,7 +62,7 @@ function create(daily) {
     holder.appendChild(modal)
 }
 
-function repeatAnim(){
+function repeatAnim() {
 
     const holder = document.getElementById("top-bar")
 
@@ -74,20 +80,20 @@ function getTimeRemaining(endtime) {
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / (1000 * 60 * 60)));
-    
+
     return {
-      total,
-      hours,
-      minutes,
-      seconds
+        total,
+        hours,
+        minutes,
+        seconds
     };
-  }
-  
+}
+
 document.addEventListener('switchMode', (e) => {
     destroy()
 })
 
-function destroy(){
+function destroy() {
 
     const holder = document.getElementById("top-bar")
     if (holder) {
