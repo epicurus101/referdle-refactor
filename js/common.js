@@ -1,5 +1,5 @@
 let common = {
-    developerMode: true,
+    developerMode: false,
 
 }
 
