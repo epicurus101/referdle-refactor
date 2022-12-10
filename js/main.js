@@ -67,11 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
             element.onclick = () => {
                 buttons.forEach(e => {
                     e.style.color = uColours.offWhite
-                    e.style.backgroundColor = uColours.black
+                    e.style.backgroundColor = uColours.darkGrey
                     e.style.border = "0px"
                 });
                 element.style.color = uColours.black
-                element.style.backgroundColor = uColours.yellow
+                element.style.backgroundColor = uColours.highlight
                 element.style.border = "1px solid rgb(0,0,0)"
                 const event = new CustomEvent('switchMode', {
                     detail: {
