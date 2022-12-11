@@ -11,9 +11,23 @@ let statElement = {
 
         let processed = statElement.processForGraph(stats)
      //   console.log('stats:',processed)
+
+        let parent = document.createElement("div")
+        parent.style.textAlign = "center"
+        
+
         let graph = statElement.getFormattedGraph(processed, stats.at(-1) ? stats.at(-1) : null)
 
-        return graph
+        let text = document.createElement("div")
+        text.textContent = "Guess Distribution"
+        text.style.alignSelf = "center"
+        parent.appendChild(text)
+        parent.appendChild(document.createElement("br"))
+        parent.appendChild(graph)
+        parent.appendChild(document.createElement("br"))
+        
+
+        return parent
 
     },
 
