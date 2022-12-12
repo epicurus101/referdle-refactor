@@ -1,4 +1,4 @@
-import { Modal, common } from '../js/contents.js'
+import { Modal, common, dictionary, derivatives } from '../js/contents.js'
 
 export class AboutModal extends Modal {
 
@@ -35,7 +35,12 @@ export class AboutModal extends Modal {
         text2.textContent = `\r\nAnd finally, thanks to Pete, Kathy, Tim and Emily for providing invaluable feedback on early versions of the game.`
         +`\r\n\r\n`
         +`All feedback, and offers of seven-figure sums to buy the site, should be sent to contact@referdle.com `
-        
+        +`\r\n\r\n`
+        +`v1.001`
+        +`\r\n`
+        +`dictionary v${dictionary.version}`
+        +`\r\n`
+        +`derivatives v${derivatives.version}`
 
     }
 
