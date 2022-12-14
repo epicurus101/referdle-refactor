@@ -31,7 +31,9 @@ export class GameResult {
         } else {
             text += GameResult.emojis[5]
         }
+
         text += `\r\n\r\nwww.referdle.com`
+        text += `\r\ntwitter: @referdle`
 
         return text
     }

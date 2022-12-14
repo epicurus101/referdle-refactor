@@ -36,7 +36,7 @@ export class AboutModal extends Modal {
         +`\r\n\r\n`
         +`All feedback, and offers of seven-figure sums to buy the site, should be sent to contact@referdle.com `
         +`\r\n\r\n`
-        +`v1.001`
+        +`v1.002`
         +`\r\n`
         +`dictionary v${dictionary.version}`
         +`\r\n`
