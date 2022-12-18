@@ -1,3 +1,18 @@
 RewriteEngine On
 RewriteCond %{SERVER_PORT} !=443
 RewriteRule ^(.*)$ https://referdle.com/$1 [R=301,L]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin http://www.referdle.com 
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+# cache images and flash content for one month
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
+	Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+# cache text, css, and javascript files for one day
+<FilesMatch ".(js|css|pdf|txt)$">
+	Header set Cache-Control "max-age=10"
+</FilesMatch>

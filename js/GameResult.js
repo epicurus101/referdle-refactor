@@ -48,7 +48,7 @@ export class GameResult {
         obj.dailyNo = detail.dailyNo;
         for (let index = 1; index < detail.boards.length; index++) {
             const board = detail.boards[index];
-            obj.guesses.push(board.guessedWordCount)
+            obj.guesses.push(board.guessedWordCount) //code an incomplete board as 0 and a dead board as -1
         }
         return new GameResult(obj)
     }

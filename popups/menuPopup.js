@@ -28,12 +28,12 @@ window.onclick = (e) => {
 function showMenu() {
 
     menuPopup.style.display = "block";
-    let board = document.getElementById("board-container")
+    let topBar = document.getElementById("top-bar")
 
     menuPopup.style.width = (common.width * 0.4) + 'px'
     menuPopup.style.height = common.width * 0.1 + 'px'
-    menuPopup.style.left = board.offsetLeft + board.offsetWidth - menuPopup.offsetWidth + `px`
-    menuPopup.style.top =  (board.offsetTop) + `px`
+    menuPopup.style.left = topBar.offsetLeft + topBar.offsetWidth - menuPopup.offsetWidth + `px`
+    menuPopup.style.top =  (topBar.offsetTop) + `px`
 
     const data = [
         ["How to Play", "help", "showHelpModal"],

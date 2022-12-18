@@ -6,6 +6,7 @@
     <meta name="author" content="Matt Rowbotham">
     <title>Referdle</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css" />
     <meta name="description" content="Put your logic and vocabulary to the test and deduce the five words that Cluebot guessed in the Clue Grid! You have 5 guesses per word to solve all five. A new Referdle is available each day to solve.">
     <meta name="keywords" content="referdle, game, puzzle, word, words, letters, play, online, guess, brain teaser, logic, deduce">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@
     <script type="module" src="popups/copiedPopup.js"></script>
     <script type="module" src="popups/dictPopup.js"></script>
     <script type="module" src="js/contents.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -36,10 +36,10 @@
                 <input type="image" src="images/menu.png" id="menu-button" name="menu" width="50" height="50" alt="menu"/>  
             </header>
                         <!-- deliberately not a modal class, needs to behave differently -->
-            <div id="top-bar"> </div>
-            <div id="board-container">
+            <div id="top-bar">
                 <div id="menu-popup"> </div>
             </div>
+            <div id="board-container"></div>
             <div id="keyboard-container" class="prevent-select">
                 <div class="keyboard-row" class="prevent-select">
                     <button data-key="Q">Q</button>

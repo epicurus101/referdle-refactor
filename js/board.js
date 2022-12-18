@@ -182,7 +182,6 @@ export class Board {
         const numberOfGuessedWords = this.guessedWords.length;
         return this.guessedWords[numberOfGuessedWords - 1];
     }
-
     getTargetWordArr(){
         return Array.from(this.targetWord);
     }
@@ -226,6 +225,16 @@ export class Board {
             this.availableSpace -= 1;
             const availableSpaceEl = document.getElementById(`b${this.index}-${this.availableSpace}`);
             availableSpaceEl.textContent = "";
+        }
+    }
+
+    getStatus(){
+        if ((this.guessedWordCount > 0) && (this.guessedWords[this.guessedWordCount-1].join("") == this.targetWord)) {
+            return this.guessedWordCount
+        } else if (this.guessedWordCount == 5) {
+            return -1
+        } else {
+            return 0
         }
     }
 

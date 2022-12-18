@@ -1,4 +1,4 @@
-import { storage, keyboard, boardManager, puzzles, logic, modalManager, GameResult } from "./contents.js"
+import { storage, keyboard, boardManager, puzzles, logic, modalManager } from "./contents.js"
 
 const gameManager = {
     firstDay: new Date("25 Nov 2022"),
