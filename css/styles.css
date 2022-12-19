@@ -261,7 +261,7 @@
 
   #dict-popup {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     background-color: var(--orange);
     text-align: center;
     font-family: customWebFont;

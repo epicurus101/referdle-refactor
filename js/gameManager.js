@@ -1,4 +1,5 @@
 import { storage, keyboard, boardManager, puzzles, logic, modalManager } from "./contents.js"
+import { diagnostic } from "./diagnostic.js"
 
 const gameManager = {
     firstDay: new Date("25 Nov 2022"),
@@ -23,7 +24,8 @@ const gameManager = {
     //put housekeeping here - void function
     processDaily: function () {
         let status = storage.getSaveStatus(true)
-        let dayDiff = gameManager.getDay() - storage.getLastDaily()
+        let savedDaily = storage.getLastDaily()
+        let dayDiff = gameManager.getDay() - savedDaily
 
         if (dayDiff == 1) { //played it yesterday
             if (status == "playable") {
@@ -33,6 +35,7 @@ const gameManager = {
         } else if (dayDiff > 1) {
             if (status == "playable") {
                 storage.addToStats("X", true) // you didn't finish! so counts as an X
+                diagnostic.report(savedDaily, 0) // 0 codes as incomplete daily
             } else {
                 storage.addToStats("B", true) //B represents a break but shouldn't affect % game stats
             }
@@ -67,6 +70,7 @@ const gameManager = {
         const daysDiff = Math.floor(diff / (24 * 60 * 60 * 1000));
         return daysDiff;
     },
+
     //call this whenever loading a new daily
     updateDaily: function () { //consider use of globals to avoid this bs?!
         let day = gameManager.getDay()
@@ -136,6 +140,7 @@ const gameManager = {
         document.dispatchEvent(event);
         console.log('event dispatched')
         storage.saveResult(event.detail)
+        diagnostic.report(daily ? gameManager.getDay() : -1, guesses)
     },
     handleLoss: function() {
         console.log('lost')
@@ -155,6 +160,7 @@ const gameManager = {
         });
         document.dispatchEvent(event);
         storage.saveResult(event.detail);
+        diagnostic.report(daily ? gameManager.getDay() : -1, boardManager.getStatus())
     }
 
 }
@@ -184,6 +190,18 @@ document.addEventListener('newPractice', (e) => {
 })
 
 document.addEventListener('abandonGame', (e) => {
+    const detail = {
+            win: false,
+            guesses: boardManager.totalGuesses(),
+            boards: boardManager.boards,
+            streak: 0,
+            daily: gameManager.dailyMode,
+            dailyNo: gameManager.getDay(),
+        }
+    storage.saveResult(detail);
+
+    diagnostic.report(gameManager.dailyMode ? gameManager.getDay() : -1, 2) // 2 codes as abandoned
+
     storage.addToStats("X", gameManager.dailyMode)
     storage.deleteSave(gameManager.dailyMode)
     gameManager.resetGame()

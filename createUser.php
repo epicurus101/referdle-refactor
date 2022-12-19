@@ -1,8 +1,7 @@
 <?php
     header("Access-Control-Allow-Origin: *");
 
-    $day = $_POST['x'];
-    $result = $_POST['y'];
+    $time_shift = $_POST['x'];
 
 
     $host_name = 'db5011222160.hosting-data.io';
@@ -17,8 +16,10 @@
         echo "Error!:" . $e->getMessage() . "<br/>";
         die();
     }
-    $sql = "INSERT INTO `results` (`id`, `day`, `result`) VALUES (NULL, $day, $result)";
+    $sql = "INSERT INTO `users` (`user_id`, `time_shift`, `joined`) VALUES (NULL, $time_shift, NULL)";
+    
     if ($dbh->exec($sql) === 1)
-        echo $day;
+        $last_id = $dbh->lastInsertId();
+        echo $last_id;
 
 ?>

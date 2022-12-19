@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referdle Tips</title>
     <link rel="stylesheet" href="css/styles2.css" />
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
 </head>
 <body style="background-color:black;">
     <div id="container">
@@ -18,7 +13,7 @@
             <header>
                 <input type="image" src="images/logo.png" name="logo" width="128" height="80" alt="logo"/>
             </header>
-            <button id="add">Insert Result</button>
+            <button id="add">Create User</button>
             <div id="result"></div>
             <script>
               let btn = document.getElementById("add");
@@ -26,18 +21,21 @@
 
           
               btn.addEventListener("click", function(){
-                let x = Math.round(Math.random() * 1000)
-                let y = Math.round(Math.random() * 20) + 5;
+                let x = new Date().getTimezoneOffset();
 
-                fetch("https://www.referdle.com/basic.php", {
+
+                fetch("https://www.referdle.com/createUser.php", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                   },
-                  body: `x=${x}&y=${y}`,
+                  body: `x=${x}`,
                 })
                 .then((response) => response.text())
-                .then((res) => (console.log(res)));
+                .then((res) => (console.log(res)))
+                .catch(function (err){
+                    console.log(err);  // Prints "Error: something went terribly wrong"
+                })
               })
             </script>
         </div>         

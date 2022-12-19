@@ -16,6 +16,7 @@ import { statElement } from './statElement.js';
 import { Modal } from '../modals/Modal.js';
 import { modalManager } from '../modals/modalManager.js';
 import { common } from './common.js';
+import { id } from './id.js';
 
 
 
@@ -38,6 +39,7 @@ export {
     statElement,
     Modal,
     modalManager,
-    common
+    common,
+    id,
     
 }

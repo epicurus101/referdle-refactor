@@ -232,9 +232,9 @@ export class Board {
         if ((this.guessedWordCount > 0) && (this.guessedWords[this.guessedWordCount-1].join("") == this.targetWord)) {
             return this.guessedWordCount
         } else if (this.guessedWordCount == 5) {
-            return -1
+            return 6 //codes as 'run out'
         } else {
-            return 0
+            return 0 //codes as incomplete
         }
     }
 

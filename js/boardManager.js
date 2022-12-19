@@ -148,7 +148,23 @@ const boardManager = {
             total += (board.guessedWordCount)
         }
         return total;
+    },
+    getStatus: function() {
+        let status = []
+        for (let index = 0; index < boardManager.boards.length; index++) {
+            const element = boardManager.boards[index];
+            status.push(element.getStatus());
+        }
+        let total = status.reduce((a, b) => a + b, 0)
+        if (status.includes(6)) {
+            return 1 //coded as 'run out of guesses'
+        } else if (status.includes(0)) {
+            return 0 //coded as incomplete daily - abandoned games don't use this
+        } else {
+            return total //can be used to get totalGuesses!
+        }
     }
+
 
 }
 
