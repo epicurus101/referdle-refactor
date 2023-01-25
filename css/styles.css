@@ -369,7 +369,7 @@
   }
 
 
-.stat-mode-button, .play-mode-button {
+.stat-mode-button, .play-mode-button, .next-tip-button {
   color: black;
   position: relative;
   display: inline-block;
@@ -387,13 +387,18 @@
 
 }
 
+
+
 .stat-mode-button:hover,
 .stat-mode-button:focus,
 .play-mode-button:hover,
-.play-mode-button:focus {
+.play-mode-button:focus
+.next-tip-button:hover,
+.next-tip-button:focus {
   filter:brightness(150%);
   cursor: pointer;
 }
+
 
 
 
@@ -499,17 +504,16 @@
 
 .tip-holder {
   display: flex;
-  padding: 0.5rem;
-  margin-top: 1rem;
+  padding: calc(var(--width) * 0.015px);
+  margin-top: calc(var(--width) * 0.03px);
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: 1.25rem;
   border: 1px dashed var(--green);
 }
 
 .tip-holder .image-text-container {
-  width: 75%;
+  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -519,19 +523,20 @@
 }
 
 .tip-holder p {
-  margin: 1rem;
+  margin: calc(var(--width) * 0.03px);
   text-align: left;
   font-weight: bold;
+  font-size: calc(var(--width) * 0.035px);
   overflow: hidden;
   white-space: pre-wrap;
 }
 
 .tip-holder p.text-center {
   font-weight: normal;
-  font-size: 1rem;
+  font-size: calc(var(--width) * 0.03px);
   width: 100%;
   margin-left: 0;
-  margin-top: 1rem;
+  margin-top: calc(var(--width) * 0.03px);
 }
 
 .tip-holder .img2 {
@@ -539,7 +544,15 @@
   width: 50%;
 }
 
-.tip-holder .stat-mode-button {
-  margin: 1em auto;
+.next-tip-button {
+  background-color: var(--green);
+  color: var(--offWhite);
+  font-size: calc(var(--width) * 0.03px);
+  margin: calc(var(--width) * 0.03px) auto;
 }
 
+.next-tip-button:hover,
+.next-tip-button:focus {
+  filter:brightness(150%);
+  cursor: pointer;
+}
