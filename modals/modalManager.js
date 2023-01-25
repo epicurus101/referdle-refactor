@@ -19,6 +19,7 @@ const modalManager = {
     endGame: function(e){
         let modal = new EndGameModal(e)
         modalManager.add(modal.modal)
+        modal.cycleTip()
     },
     showHelp: function(e){
         let modal = new HelpModal(e)
