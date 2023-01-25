@@ -37,6 +37,7 @@
     --transparent: rgba(0,0,0,0);
     --black: rgb(0,0,0);
     --orange: rgb(255,165,0);
+    --brightYellow: rgb(255,235,80);
     --lightGrey: rgb(200,201,202);
     --height: 100;
     --width: 100;
@@ -495,3 +496,50 @@
   font-family: customWebFont;
   font-size: 1rem;
 }
+
+.tip-holder {
+  display: flex;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  border: 1px dashed var(--green);
+}
+
+.tip-holder .image-text-container {
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+
+.tip-holder img {
+  width: 25%;
+}
+
+.tip-holder p {
+  margin: 1rem;
+  text-align: left;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.tip-holder p.text-center {
+  font-weight: normal;
+  font-size: 1rem;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 1rem;
+}
+
+.tip-holder .img2 {
+  margin: auto;
+  width: 50%;
+}
+
+.tip-holder .stat-mode-button {
+  margin: 1em auto;
+}
+
