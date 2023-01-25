@@ -119,14 +119,12 @@ export class EndGameModal extends Modal {
         tipHolder.appendChild(image2);
 
         let b1 = document.createElement("div")
+        b1.classList.add("next-tip-button")
         b1.textContent = "Next tip"
-        b1.classList.add("stat-mode-button")
-        tipHolder.appendChild(b1)
+        imageTextContainer.appendChild(b1)
 
         b1.onclick = (e) => {
             if (e) {e.stopPropagation()}
-            b1.style.color = uColours.black
-            b1.style.backgroundColor = uColours.highlight
             this.cycleTip()
         }
         
@@ -180,7 +178,7 @@ export class EndGameModal extends Modal {
         "top-tip5.jpg"],
         ["Don’t let yourself run out of guesses on a word if you have other uncompleted Word Grids. The other Word Grid(s) might just give you the information you need to avoid running out of guesses!", null],
         ["Where a word has one or two spaces where lots of consonants can fit, try a ‘minesweeper’ word to eliminate possibilities. For example if the word is * A * E D then the word NYMPH might be a good minesweeper, because N, Y, M, P and H are all possible consonant fits.", null],
-        ["Some people try to get each word in order (unless they get stuck!), some people prefer to work in reverse, and some people like to try a word in each Grid before circling back to complete them. Experiment with different strategies, find what works for you.", null],
+        ["Some people try to solve each word in order (unless they get stuck!), some people prefer to work in reverse, and some people like to try a single guess in each Grid before circling back to complete them. Experiment with different strategies, find what works for you.", null],
         ["If you’re struggling with the logic of Referdle, try the “Tips and Tricks” section of the menu for a deep-dive into Referdle logic.", null],
         ["To promote transatlantic harmony, Cluebot avoids guessing words which are spelled differently in different countries (like 'ODORS', 'AXELS', 'COLOUR') and words like these won't generally appear as answers in the Clue Grid. If you spot one we've missed, or have any other comments on the dictionary, you can get in touch on contact@referdle.com, @referdle on Twitter or @referdle@mastodon.gamedev.place on Mastodon ", null],
         ["While Cluebot is very logical, they are not very strategic. So their first guess is just as likely to be 'VYING' with its uncommon letters as it is 'STEAD' with its much more common letters", null]
